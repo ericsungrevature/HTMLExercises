@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Auction</title>
+    <style>
+        div.team {
+            border: 2px solid black;
+            height: 300px;
+            width: 300px;
+            display: table-cell;
+        }
+        span.circle {
+            height: 75px;
+            width: 75px;
+            border-radius: 50%;
+            border-width: thin;
+            border-style: solid;
+            border-color: black;
+            line-height: 75px;
+            display: inline-flex;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 style="text-align: center;">Cricket Auction</h1>
+        <div style="display: table-header-group;">
+            <div style="display: table-cell; text-align: center;">Team 1</div>
+            <div style="display: table-cell; text-align: center;">Team 2</div>
+            <div style="display: table-cell; text-align: center;">Team 3</div>
+            <div style="display: table-cell; text-align: center;">Team 4</div>
+        </div>
+        <div style="display: table-row-group;">
+            <div id="team1" class="team" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div id="team2" class="team" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div id="team3" class="team" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div id="team4" class="team" ondrop="drop(event)" ondragover="allowDrop(event)"></div>    
+        </div>
+    </div>
+    <br>
+    <div>
+        <span id="member1" class="circle" draggable="true" ondragstart="drag(event)">Member 1</span>
+        <span id="member2" class="circle" draggable="true" ondragstart="drag(event)">Member 2</span>
+        <span id="member3" class="circle" draggable="true" ondragstart="drag(event)">Member 3</span>
+        <span id="member4" class="circle" draggable="true" ondragstart="drag(event)">Member 4</span>
+        <span id="member5" class="circle" draggable="true" ondragstart="drag(event)">Member 5</span>
+        <span id="member6" class="circle" draggable="true" ondragstart="drag(event)">Member 6</span>
+        <span id="member7" class="circle" draggable="true" ondragstart="drag(event)">Member 7</span>
+        <span id="member8" class="circle" draggable="true" ondragstart="drag(event)">Member 8</span>
+        <span id="member9" class="circle" draggable="true" ondragstart="drag(event)">Member 9</span>
+    </div>
+    <script>
+        function allowDrop(event) {
+            event.preventDefault()
+        }
+        function drag(event) {
+            var id = event.target.id
+            event.dataTransfer.setData("text", id)
+            console.log(event.target.id+" dragged")
+        }
+        function drop(event) {
+            var id = event.dataTransfer.getData("text")
+            event.target.appendChild(document.getElementById(id))
+            console.log(id+" dropped into "+event.target.id)
+        }
+    </script>
+</body>
+</html>

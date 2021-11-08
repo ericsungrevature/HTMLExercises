@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.section {
+            border: 2px solid black;
+            height: 300px;
+            width: 300px;
+            display: table-cell;
+        }
+    </style>
+    <script>
+        function switchMessage() {
+            var check=document.getElementById("box1").checked
+            if(check)
+                document.getElementById("result1").innerHTML="Checked"
+            else
+                document.getElementById("result1").innerHTML="Unchecked"
+        }
+        function getTotal() {
+            var total=document.getElementById("text1").value
+            document.getElementById("result2").innerHTML=total.length
+        }
+        function addNumber() {
+            var a=document.getElementById("num1").value
+            var b=document.getElementById("num2").value
+            document.getElementById("result3").innerHTML=parseInt(a)+parseInt(b)
+        }
+        function checkForm() {
+            var username=document.getElementById("username").value
+            var password=document.getElementById("password").value
+            if(username.length==0)
+                console.log("Error: username must be filled out")
+            if(password.length==0)
+            console.log("Error: password must be filled out")
+        }
+    </script>
+</head>
+<body>
+<div class="section">
+    Checkbox<input type="checkbox" name="checkbox" id="box1" onclick="switchMessage()"><br>
+    <span id="result1">Unchecked</span>
+</div>
+<div class="section">
+    <input type="text" name="text" id="text1" oninput="getTotal()"><br>
+    Total Characters: <span id="result2"></span>
+</div>
+<div class="section">
+    Number 1<input type="number" name="number" id="num1" value="0"><br>
+    Number 2<input type="number" name="number" id="num2" value="0"><br>
+    <input type="button" value="Add" onclick="addNumber()"><br>
+    Sum: <span id="result3"></span>
+</div>
+<div class="section">
+    Username: <input type="name" id="username">
+    Password: <input type="password" id="password">
+    <input type="submit" value="Submit" onclick="checkForm()">
+</div>
+</body>
+</html>
